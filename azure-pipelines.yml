@@ -20,4 +20,11 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- task: PublishBuildArtifacts@1
+# - task: PublishBuildArtifacts@1
+- task: AzureFunctionApp@1
+  inputs:
+    azureSubscription: 'xfx-solutions (9cac1f79-360c-424d-9d0c-c4618e43c4b4)'
+    appType: 'functionApp'
+    appName: 'xfx-log-viewer-s'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    deploymentMethod: 'auto'
